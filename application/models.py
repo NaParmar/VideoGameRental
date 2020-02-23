@@ -1,15 +1,15 @@
-from application import db, login_manager
+from application import db
 from flask_login import UserMixin
 from datetime import date, timedelta
 
 
 class videogame(db.Model):
     VideoGameID = db.Column(db.Integer, primary_key=True)
-    Title = db.Column(db.String(100), nullable=False, unique=True)
-    Genre = db.Column(db.String(500), nullable=False, unique=True)
-    Players = db.Column(db.String(100), nullable=False, unique=True)
-    Rating = db.Column(db.String(100), nullable=False, unique=True)
-    Platform = db.Column(db.String(100), nullable=False, unique=True)
+    Title = db.Column(db.String(100), nullable=False)
+    Genre = db.Column(db.String(500), nullable=False)
+    Players = db.Column(db.String(100), nullable=False)
+    Rating = db.Column(db.String(100), nullable=False)
+    Platform = db.Column(db.String(100), nullable=False)
     Rental = db.relationship('rental', backref='videogametorental', lazy=True)
 
     def __repr__(self):
@@ -18,7 +18,7 @@ class videogame(db.Model):
              'Description: ', self.Title, '\r\n', self.Genre, '\r\n', self.Players,'\r\n', self.Rating, '\r\n', self.Platform, '\r\n',
     ])
 
-@login_manager.user_loader
+
 def load_user(MemberID):
     return Member.query.get(int(MemberID))
 

@@ -4,4 +4,19 @@
 	<p>Welcome to Video Game Rental<br>
 	<br>You can Rent PC, Playstation, XBOX and Nintendo Games
 	</p>
+	{% if games %}
+		<p>The games avaialble for renting are below</p> 
+		{% for game in games %}
+			<div>
+			<h3>{{ game.Title }}</h3>
+			<p>Genre: {{ game.Genre }} | 
+			Players: {{ game.Players }} | 
+			Rating: {{ game.Rating }} | 
+			Platform: {{ game.Platform }}
+			</p>
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>There are no video games to display.</p>
+	{% endif %}
 {% endblock body_content %}

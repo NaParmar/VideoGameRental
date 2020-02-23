@@ -1,10 +1,12 @@
 from flask import render_template
-from application import app
+from application import app, db
+from application.models import videogame, member, rental
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', title='Home')
+    videogamedata = videogame.query.all()
+    return render_template('home.html', title='Home', games=videogamedata)
 
 @app.route('/about')
 def about():
