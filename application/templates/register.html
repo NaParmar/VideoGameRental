@@ -4,4 +4,103 @@
 	<p>Create an account by registering
 	<br> You can then start renting Video Games
 	</p>
+	<div class="form">
+		<form method="POST" action="">
+        		{{ form.hidden_tag() }}
+   
+    			<div class="form-group">
+        			{{ form.FirstName.label }}
+        			{{ form.FirstName }}
+        			<div class="error">
+            				{% for error in form.FirstName.errors %}
+                			<p>{{ error }}</p>
+            				{% endfor %}
+        			</div>
+    			</div>
+			<div class="form-group">
+                                {{ form.LastName.label }}
+                                {{ form.LastName }}
+                                <div class="error">
+                                        {% for error in form.LastName.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.HouseNameNo.label }}
+                                {{ form.HouseNameNo }}
+                                <div class="error">
+                                        {% for error in form.HouseNameNo.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.Street.label }}
+                                {{ form.Street }}
+                                <div class="error">
+                                        {% for error in form.Street.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.City.label }}
+                                {{ form.City }}
+                                <div class="error">
+                                        {% for error in form.City.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.County.label }}
+                                {{ form.County }}
+                                <div class="error">
+                                        {% for error in form.County.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.Postcode.label }}
+                                {{ form.Postcode }}
+                                <div class="error">
+                                        {% for error in form.Postcode.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+                                {{ form.EmailAddress.label }}
+                                {{ form.EmailAddress }}
+                                <div class="error">
+                                        {% for error in form.EmailAddress.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                </div>
+                        </div>
+			<div class="form-group">
+				{{ form.Password.label }}
+				{{ form.Password }}
+				<div class="error">
+					{% for error in form.Password.errors %}
+					<p>{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ form.confirm_password.label }}
+				{{ form.confirm_password }}
+				<div class="error">
+					{% for error in form.confirm_password.errors %}
+					<p>{{ error }}</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ form.submit }}
+			</div>
+		</form>
+	</div>
 {% endblock body_content %}

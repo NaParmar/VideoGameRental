@@ -4,4 +4,40 @@
         <p>
 	Enter your Email and password to login
         </p>
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.EmailAddress.label }}
+                {{ form.EmailAddress }}
+                {% if form.EmailAddress.errors %}
+                    <div class='error'>
+                        {% for error in form.EmailAddress.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.Password.label }}
+                {{ form.Password }}
+                {% if form.Password.errors %}
+                    <div class='error'>
+                        {% for error in form.Password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <br>
+            <div class='form_group'>
+                {{ form.remember.label }}
+				{{ form.remember }}
+            </div>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
 {% endblock body_content %}
