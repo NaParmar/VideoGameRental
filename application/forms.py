@@ -89,3 +89,61 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+
+class UpdateAccountForm(FlaskForm):
+    FirstName = StringField('First Name',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=30)
+        ]
+    )
+    LastName = StringField('Last Name',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=30)
+        ]
+    )
+    HouseNameNo = StringField('House Name/NO',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=20)
+        ]
+    )
+    Street = StringField('Street',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=20)
+        ]
+    )
+    City = StringField('City',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=20)
+        ]
+    )
+    County = StringField('County',
+        validators = [
+            DataRequired(),
+            Length(min=1, max=20)
+        ]
+    )
+    Postcode = StringField('Postcode',
+        validators = [
+            DataRequired(),
+            Length(min=6, max=10)
+        ]
+    )
+    EmailAddress = StringField('Email',
+        validators = [
+            DataRequired(),
+            Email()
+        ]
+    )
+    submit = SubmitField('Update Details')
+
+    def validate_email(self, email):
+        if EmailAddress.data != current_user.EmailAddress:
+            member = member.query.filter_by(email=EmailAddress.data).first()
+
+            if member:
+                raise ValidationError('Email already in use')
